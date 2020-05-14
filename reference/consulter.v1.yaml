@@ -81,6 +81,12 @@ paths:
           in: query
           name: limit
           description: Limit data per page
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MedicalStaffSearchRequest'
+        description: ''
   /v1/consulters:
     post:
       summary: ''
@@ -118,6 +124,35 @@ paths:
         in: path
         required: true
         description: consulter id
+    get:
+      summary: ''
+      operationId: get-v1-consulters-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConsulterGetResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ../models/errorResponse.v1.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/errorResponse.v1.yaml
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: ../models/errorResponse.v1.yaml
+      description: Get consulter information
     put:
       summary: ''
       operationId: 'put-v1-consulters-:id'
@@ -152,36 +187,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ConsulterUpdateRequest'
-    get:
-      summary: ''
-      operationId: get-v1-consulters-id
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ConsulterGetResponse'
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: ../models/errorResponse.v1.yaml
-        '404':
-          description: Not Found
-          content:
-            application/json:
-              schema:
-                $ref: ../models/errorResponse.v1.yaml
-        '500':
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: ../models/errorResponse.v1.yaml
-      description: Get consulter information
-  /v1/introduced-resource/search:
+  /v1/introduced-resources/search:
     post:
       summary: ''
       operationId: post-v1-introduced-resource-search
@@ -221,6 +227,7 @@ paths:
           in: query
           name: limit
           description: Limit data per page
+    parameters: []
   '/v1/organizations/{id}/departments':
     parameters:
       - schema:
