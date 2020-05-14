@@ -1,0 +1,13 @@
+title: department
+type: object
+description: 部署
+properties:
+  id:
+    type: string
+    description: 部署ID
+  name:
+    type: string
+    description: 部署名
+required:
+  - id
+  - name

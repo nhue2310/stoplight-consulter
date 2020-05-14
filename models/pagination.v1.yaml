@@ -1,0 +1,12 @@
+title: pagination
+type: object
+properties:
+  total:
+    description: total data
+    type: integer
+  limit:
+    description: limit per page
+    type: integer
+  offset:
+    description: position to get next page
+    type: number

@@ -1,0 +1,28 @@
+title: introducedDoctor
+type: object
+description: 紹介元（医師）
+properties:
+  id:
+    type: string
+    description: 協力者ID
+  name:
+    type: string
+    description: 協力者名
+  kanaName:
+    type: string
+    description: カナ協力者名
+  introducedOrganizations:
+    type: array
+    description: "introduced doctor's organizations"
+    items:
+      $ref: ./introducedOrganization.v1.yaml
+  phoneNumber:
+    type: array
+    description: 電話番号
+    items:
+      type: string
+      minLength: 0
+      maxLength: 5
+required:
+  - id
+  - name

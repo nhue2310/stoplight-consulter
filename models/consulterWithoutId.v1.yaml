@@ -1,0 +1,67 @@
+title: consulterWithoutId
+type: object
+description: 相談者・紹介患者
+properties:
+  note:
+    type: string
+    description: 備考
+  doctorInCharge:
+    type: string
+    description: 担当医師
+  articleCount:
+    type: integer
+    description: 相談記事
+  staffInCharge:
+    type: string
+    description: 担当職員
+  receptionStaff:
+    type: string
+    description: 受付職員
+  attachments:
+    $ref: ./attachment.v1.yaml
+  introducedDoctor:
+    $ref: ./introducedDoctor.v1.yaml
+  relatedPatient:
+    type: string
+    description: 関連患者番号
+  email:
+    type: string
+    format: email
+    description: Eメール
+  phoneNumber:
+    type: array
+    description: 電話番号
+    items:
+      type: string
+      minLength: 0
+      maxLength: 5
+  address:
+    type: string
+    description: 住所
+  postalCode:
+    type: string
+    description: 住所　郵便番号
+  gender:
+    type: string
+    enum:
+      - male
+      - female
+      - other
+      - unknow
+    description: 性別
+  birthDate:
+    type: string
+    format: date
+    description: 生年月日
+  kanaName:
+    type: string
+    description: カナ氏名
+  name:
+    type: string
+    description: 氏名
+required:
+  - phoneNumber
+  - address
+  - gender
+  - birthDate
+  - name

@@ -1,0 +1,22 @@
+title: consulter
+description: 相談者・紹介患者
+allOf:
+  - type: object
+    properties:
+      id:
+        type: string
+        description: 相談者・紹介患者ID
+      updater:
+        type: string
+        description: 更新者
+      updatedDate:
+        type: string
+        format: date-time
+        description: 更新日時
+      createdDate:
+        type: string
+        format: date-time
+        description: 登録日時
+    required:
+      - id
+  - $ref: ./consulterWithoutId.v1.yaml

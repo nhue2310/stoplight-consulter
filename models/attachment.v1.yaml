@@ -1,0 +1,10 @@
+title: attachment
+type: object
+description: 添付ファイル
+properties:
+  fileName:
+    type: string
+    description: file name
+  data:
+    type: string
+    description: file content

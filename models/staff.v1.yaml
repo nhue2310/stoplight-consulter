@@ -1,0 +1,21 @@
+title: staff
+type: object
+description: 職員
+properties:
+  id:
+    type: string
+    description: 職員ID
+  kanaName:
+    type: string
+    description: カナ職員名
+  departments:
+    type: array
+    description: 部署
+    items:
+      $ref: ./department.v1.yaml
+  name:
+    type: string
+    description: 職員名
+required:
+  - id
+  - name

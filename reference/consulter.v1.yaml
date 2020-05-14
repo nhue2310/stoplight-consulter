@@ -1,0 +1,466 @@
+openapi: 3.0.0
+info:
+  title: consulter
+  version: '1.0'
+servers:
+  - url: 'http://localhost:3000'
+paths:
+  /v1/consulters/search:
+    post:
+      summary: ''
+      operationId: post-v1-consulter-search
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConsulterSearchResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ../models/errorResponse.v1.yaml
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: ../models/errorResponse.v1.yaml
+      description: Search consulter with conditions
+      parameters:
+        - schema:
+            type: number
+          in: query
+          name: offset
+          description: Position to start get new data
+        - schema:
+            type: number
+          in: query
+          name: limit
+          description: Limit data per page
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConsulterSearchRequest'
+    parameters: []
+  /v1/medical-staffs/search:
+    post:
+      summary: ''
+      operationId: post-v1-medical-staffs-search
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StaffSearchResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ../models/errorResponse.v1.yaml
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: ../models/errorResponse.v1.yaml
+      description: Search medical staffs by condition
+      parameters:
+        - schema:
+            type: number
+          in: query
+          name: offset
+          description: Position to start get new data
+        - schema:
+            type: number
+          in: query
+          name: limit
+          description: Limit data per page
+  /v1/consulters:
+    post:
+      summary: ''
+      operationId: post-v1-consulters
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConsulterCreateResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ../models/errorResponse.v1.yaml
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: ../models/errorResponse.v1.yaml
+      description: Create consulter
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConsulterCreateRequest'
+  '/v1/consulters/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: consulter id
+    patch:
+      summary: ''
+      operationId: 'patch-v1-consulters-:id'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConsulterUpdateResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ../models/errorResponse.v1.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/errorResponse.v1.yaml
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: ../models/errorResponse.v1.yaml
+      description: Update consulter info
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConsulterUpdateRequest'
+    get:
+      summary: ''
+      operationId: get-v1-consulters-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConsulterGetResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ../models/errorResponse.v1.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/errorResponse.v1.yaml
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: ../models/errorResponse.v1.yaml
+      description: Get consulter information
+  /v1/introduced-resource/search:
+    post:
+      summary: ''
+      operationId: post-v1-introduced-resource-search
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IntroducedResourceSearchResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ../models/errorResponse.v1.yaml
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: ../models/errorResponse.v1.yaml
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IntroducedResourceSearchRequest'
+      description: Search for introduced resource
+      parameters:
+        - schema:
+            type: number
+          in: query
+          name: offset
+          description: Position to start get new data
+        - schema:
+            type: number
+          in: query
+          name: limit
+          description: Limit data per page
+  '/v1/organizations/{id}/departments':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: ''
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DepartmentListResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ../models/errorResponse.v1.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/errorResponse.v1.yaml
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: ../models/errorResponse.v1.yaml
+      operationId: get-v1-organizations-id-departments
+      description: Get list department in organization
+      parameters:
+        - schema:
+            type: number
+          in: query
+          name: offset
+          description: Position to start get new data
+        - schema:
+            type: number
+          in: query
+          name: limit
+          description: Limit data per page
+  '/v1/consulters/{id}/histories':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: ''
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConsulterHistoryResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ../models/errorResponse.v1.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/errorResponse.v1.yaml
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: ../models/errorResponse.v1.yaml
+      operationId: get-v1-consulters-id-histories
+      parameters:
+        - schema:
+            type: number
+          in: query
+          name: limit
+          description: Position to start get new data
+        - schema:
+            type: number
+          in: query
+          name: offset
+          description: Limit data per page
+      description: Get histories of consulter
+components:
+  schemas:
+    ConsulterSearchRequest:
+      title: ConsulterSearchRequest
+      type: object
+      description: Request search consulter
+      properties:
+        id:
+          type: string
+          description: Consulter id
+        name:
+          type: string
+          description: Consulter name
+        birthDate:
+          type: string
+          format: date
+          description: Consulter birth date
+        phoneNumber:
+          type: array
+          description: Consulter phone number
+          items:
+            type: string
+        introduced:
+          type: string
+          description: Consulter introduced
+        staffInCharge:
+          type: string
+          description: Staff in charge
+        doctorInCharge:
+          type: string
+          description: Doctor in charge
+    ConsulterSearchResponse:
+      title: ConsulterSearchResponse
+      type: object
+      description: Response data of consulter search process
+      properties:
+        consulters:
+          type: array
+          description: Consulter list
+          items:
+            $ref: ../models/consulter.v1.yaml
+        pagination:
+          $ref: ../models/pagination.v1.yaml
+    StaffSearchRequest:
+      title: StaffSearchRequest
+      type: object
+      description: Request search staffs
+      properties:
+        departmentId:
+          type: string
+          description: Department id
+        name:
+          type: string
+          description: Name or kana name of staff
+    StaffSearchResponse:
+      title: StaffSearchResponse
+      type: object
+      description: Response data of staffs search process
+      properties:
+        staffs:
+          type: array
+          description: List data of staff
+          items:
+            $ref: ../models/staff.v1.yaml
+        pagination:
+          $ref: ../models/pagination.v1.yaml
+    ConsulterCreateRequest:
+      allOf:
+        - $ref: ../models/consulterWithoutId.v1.yaml
+      description: Request create consulter
+    ConsulterCreateResponse:
+      title: ConsulterCreateResponse
+      description: Response data of consulter create process
+      type: object
+      properties:
+        id:
+          type: string
+          description: Consulter Id
+      required:
+        - id
+    ConsulterUpdateRequest:
+      title: ConsulterUpdateRequest
+      allOf:
+        - $ref: ../models/consulter.v1.yaml
+      description: Request update consulter
+    ConsulterUpdateResponse:
+      title: ConsulterUpdateResponse
+      type: object
+      description: Response data of consulter update process
+      properties:
+        id:
+          type: string
+          description: Consulter id
+      required:
+        - id
+    IntroducedResourceSearchRequest:
+      title: IntroducedResourceSearchRequest
+      type: object
+      description: Request search introduced resource list
+      properties:
+        name:
+          type: string
+          description: Name or kana name of introduced doctor
+        organizationName:
+          type: string
+          description: Organization name
+    IntroducedResourceSearchResponse:
+      title: IntroducedResourceSearchResponse
+      type: object
+      description: Response data of introduced-resource search process
+      properties:
+        introducedList:
+          type: array
+          description: Introduced-resource list
+          items:
+            $ref: ../models/introducedDoctor.v1.yaml
+        pagination:
+          $ref: ../models/pagination.v1.yaml
+    DepartmentListResponse:
+      title: DepartmentListResponse
+      type: object
+      description: Response data of departments list process
+      properties:
+        departments:
+          type: array
+          description: Department list
+          items:
+            $ref: ../models/department.v1.yaml
+        pagination:
+          $ref: ../models/pagination.v1.yaml
+    ConsulterGetResponse:
+      title: ConsulterGetResponse
+      allOf:
+        - $ref: ../models/consulter.v1.yaml
+      description: Response data of consulter get process
+    ConsulterHistoryResponse:
+      title: ConsulterHistoryResponse
+      type: object
+      description: Response data of consulter history list process
+      properties:
+        histories:
+          type: array
+          description: History list
+          items:
+            $ref: ../models/consulter.v1.yaml
+        pagination:
+          $ref: ../models/pagination.v1.yaml

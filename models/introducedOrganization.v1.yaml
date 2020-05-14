@@ -1,0 +1,13 @@
+title: introducedOrganization
+type: object
+description: 紹介元（病院）
+properties:
+  id:
+    type: string
+    description: 機関ID
+  name:
+    type: string
+    description: 機関名
+required:
+  - id
+  - name
