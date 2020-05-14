@@ -118,9 +118,9 @@ paths:
         in: path
         required: true
         description: consulter id
-    patch:
+    put:
       summary: ''
-      operationId: 'patch-v1-consulters-:id'
+      operationId: 'put-v1-consulters-:id'
       responses:
         '200':
           description: OK
@@ -360,8 +360,8 @@ components:
             $ref: ../models/consulter.v1.yaml
         pagination:
           $ref: ../models/pagination.v1.yaml
-    StaffSearchRequest:
-      title: StaffSearchRequest
+    MedicalStaffSearchRequest:
+      title: MedicalStaffSearchRequest
       type: object
       description: Request search staffs
       properties:
@@ -371,8 +371,11 @@ components:
         name:
           type: string
           description: Name or kana name of staff
-    StaffSearchResponse:
-      title: StaffSearchResponse
+        role:
+          type: string
+          description: medical staff role
+    MedicalStaffSearchResponse:
+      title: MedicalStaffSearchResponse
       type: object
       description: Response data of staffs search process
       properties:
@@ -380,7 +383,7 @@ components:
           type: array
           description: List data of staff
           items:
-            $ref: ../models/staff.v1.yaml
+            $ref: ../models/medicalStaff.v1.yaml
         pagination:
           $ref: ../models/pagination.v1.yaml
     ConsulterCreateRequest:
